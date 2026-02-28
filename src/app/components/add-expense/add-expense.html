@@ -1,0 +1,12 @@
+<div class="form-card">
+  <input type="text" placeholder="Title" [(ngModel)]="title">
+  <input type="number" placeholder="Amount" [(ngModel)]="amount">
+
+  <select [(ngModel)]="category">
+    <option *ngFor="let cat of categories" [value]="cat.name">
+      {{ cat.name }}
+    </option>
+  </select>
+
+  <button (click)="addExpense()">Add</button>
+</div>

@@ -1,0 +1,17 @@
+<div class="category-section">
+  <h3>Categories</h3>
+
+  <input type="text" placeholder="New Category" [(ngModel)]="newCategory">
+  <button (click)="addCategory()">Add Category</button>
+
+<div class="category-list">
+  <span
+    *ngFor="let cat of categories"
+    class="category-pill"
+    [style.background]="cat.color + '33'"
+    [style.color]="cat.color"
+  >
+    {{ cat.name }}
+  </span>
+</div>
+</div>

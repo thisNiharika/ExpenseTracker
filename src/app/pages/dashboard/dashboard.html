@@ -1,0 +1,117 @@
+<div class="page transactions">
+
+  <!-- HERO -->
+  <section class="hero">
+    <h2>Total Expenses</h2>
+    <h1>₹ {{ displayBalance }}</h1>
+  </section>
+
+  <!-- PIE CHART WRAPPER -->
+<!-- PIE CHART WRAPPER -->
+<section class="chart-wrapper">
+
+  <!-- EMPTY STATE -->
+  <div class="empty-state" *ngIf="categoryTotals.length === 0">
+    <div class="empty-icon">📊</div>
+    <p>No expenses yet</p>
+    <span>Add your first expense to see analytics</span>
+  </div>
+
+  <!-- PIE CHART -->
+  <div *ngIf="categoryTotals.length > 0">
+
+    <div class="pie-container">
+      <div class="pie-chart" [style.background]="pieGradient">
+</div>
+    </div>
+
+    <!-- Legend -->
+<div class="legend">
+
+  <div 
+    class="legend-row"
+    *ngFor="let item of categoryTotals">
+
+    <div class="legend-top">
+      <span class="legend-name">
+        {{ item.category }}
+      </span>
+
+      <span class="legend-amount">
+        ₹ {{ item.total }}
+      </span>
+
+      <span class="legend-percent">
+        {{ getCategoryPercent(item.total) }}%
+      </span>
+    </div>
+
+    <div class="legend-bar">
+      <div 
+        class="legend-bar-fill"
+        [style.width.%]="getCategoryPercent(item.total)"
+        [style.background]="item.color">
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+  </div>
+
+</section>
+
+  <!-- TRANSACTIONS -->
+  <section class="transactions">
+    <div class="tx-card" *ngFor="let expense of expenses">
+
+  <div class="tx-left">
+
+    <div 
+      class="tx-icon"
+      [style.background]="getCategoryColor(expense.category) + '20'"
+      [style.color]="getCategoryColor(expense.category)">
+
+      {{ getCategoryIcon(expense.category) }}
+
+    </div>
+
+    <div>
+      <div class="tx-title">{{ expense.title }}</div>
+      <div class="tx-category">{{ expense.category }}</div>
+    </div>
+
+  </div>
+
+  <div class="tx-amount">
+    ₹ {{ expense.amount }}
+  </div>
+
+</div>
+  </section>
+
+  <!-- FAB -->
+  <button class="fab" (click)="toggleModal()">+</button>
+
+  <!-- MODAL -->
+  <div class="overlay" *ngIf="showModal" (click)="toggleModal()"></div>
+
+  <div class="modal" *ngIf="showModal">
+
+    <h3>Add Expense</h3>
+    <div class="form">
+    <input type="text" placeholder="Title" [(ngModel)]="title">
+    <input type="number" placeholder="Amount" [(ngModel)]="amount">
+
+    <select [(ngModel)]="category">
+      <option *ngFor="let cat of categories" [value]="cat.name">
+        {{ cat.name }}
+      </option>
+    </select>
+
+    <button class="add-btn" (click)="addExpense()">Add Expense</button>
+</div>
+  </div>
+
+</div>

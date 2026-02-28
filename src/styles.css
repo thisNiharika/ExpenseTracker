@@ -1,1 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+
+  /* PRIMARY BRAND */
+  --color-primary: #3b82f6;
+  --color-accent: #14b8a6;
+
+  /* STATUS */
+  --color-success: #22c55e;
+  --color-danger: #ef4444;
+
+  /* BACKGROUNDS */
+  --color-bg: #0f172a;
+  --color-surface: #111827;
+  --color-surface-soft: #1f2937;
+
+  /* TEXT */
+  --color-text-primary: #f8fafc;
+  --color-text-muted: #94a3b8;
+
+  /* RADIUS */
+  --radius-xl: 24px;
+  --radius-lg: 18px;
+
+  /* SHADOW */
+  --shadow-soft: 0 10px 30px rgba(0,0,0,0.4);
+
+}
+
+body {
+  background: linear-gradient(180deg, #0f172a, #020617);
+  color: var(--color-text-primary);
+}
